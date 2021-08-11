@@ -52,28 +52,28 @@ function showCart() {
   
 }
 
-function removeItemFromCart(event) {
 
-  // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
-  // TODO: Save the cart back to local storage
-  // TODO: Re-draw the cart table
+  function removeItemFromCart(event) {
+    tbodyElm=table.getElementsByTagName('tbody')[0];
+    let trElm=tbodyElm.getElementsByTagName('tr')
+    // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+    for (let i =0; i<trElm.length;i++){
+      trElm[i].getElementsByTagName('td')[0];
+      if( event.target.id ==trElm[i].firstChild.id){
+        cart.removeItem(i);
+            // TODO: Save the cart back to local storage
+        cart.saveToLocalStorage();
+        // TODO: Re-draw the cart table
+  From Dima Alabsi to Everyone:  03:52 PM
+  // TODO: Add the TR to the TBODY and each of the TD's to the TR
+    tbodyElm.appendChild(trElm);
+    trElm.appendChild(tdElmLink);
+    trElm.appendChild(tdElmQuantity);
+    trElm.appendChild(tdElmItem);
+    }
+  
+  
 
-
-      
-      tBody=table.getElementsByTagName('tbody')[0];
-      let tr=tbody;
-
-      tr.getElementsByTagName('tr')
-     for (let x =0; x< tr.length;x++){
-        tr[x].getElementsByTagName('td')[0];
-        if( event.target.id ==tr[x].firstChild.id){
-          cart.removeItem(x);
-            
-          cart.saveToLocalStorage();
-         
-          renderCart();
-      }
-      }
 }
 
 renderCart();
