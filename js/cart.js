@@ -9,13 +9,13 @@ let cart;
 function loadCart() {
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart();
-  for (let i = 0; i < cartItems.length; i++) {
-    cart.push(new CartItem)
-    cartItems.items[i].product
-    cartItems.items[i].quantity
+//   for (let i = 0; i < cartItems.length; i++) {
+//     cart.push(new CartItem)
+//     cartItems.items[i].product
+//     cartItems.items[i].quantity
+// }
 }
-}
-
+console.log(Cart.items);
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
 function renderCart() {
   loadCart();
@@ -25,10 +25,12 @@ function renderCart() {
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-    for (let i = 0; i < cartItems.length; i++) {
-   
-    document.getElementById("cart").deleteRow(i);
-    
+    let rows = table.getElementsByTagName('tr');
+  
+  for (let i = 0; i <rows.length-1; i++) {
+   table.removeChild(rows[i]);
+    // document.getElementById("cart").deleteRow(i);
+
 }
 }
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
@@ -46,18 +48,8 @@ function showCart() {
   let tr = document.createElement('tr');
   tBody.appendChild(tr);
   tr.textContent = num;
-  
-  let td = document.createElement('td');
-  tr.appendChild(td);
-  td.textContent = Product.filePath ;
 
-  let td2 = document.createElement('td');
-  tr.appendChild(td2);
-  td2.textContent = CartItem.quantity ;
   
-  let td3 = document.createElement('td');
-  tr.appendChild(td3);
-  td3.textContent = cart.items ;
 }
 
 function removeItemFromCart(event) {
@@ -66,7 +58,22 @@ function removeItemFromCart(event) {
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
 
+
+      
+      tBody=table.getElementsByTagName('tbody')[0];
+      let tr=tbody;
+
+      tr.getElementsByTagName('tr')
+     for (let x =0; x< tr.length;x++){
+        tr[x].getElementsByTagName('td')[0];
+        if( event.target.id ==tr[x].firstChild.id){
+          cart.removeItem(x);
+            
+          cart.saveToLocalStorage();
+         
+          renderCart();
+      }
+      }
 }
 
-// This will initialize the page and draw the cart on screen
 renderCart();
