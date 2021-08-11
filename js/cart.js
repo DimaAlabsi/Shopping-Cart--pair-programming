@@ -46,8 +46,18 @@ function showCart() {
   let tr = document.createElement('tr');
   tBody.appendChild(tr);
   tr.textContent = num;
-
   
+  let td = document.createElement('td');
+  tr.appendChild(td);
+  td.textContent = Product.filePath ;
+
+  let td2 = document.createElement('td');
+  tr.appendChild(td2);
+  td2.textContent = CartItem.quantity ;
+  
+  let td3 = document.createElement('td');
+  tr.appendChild(td3);
+  td3.textContent = cart.items ;
 }
 
 function removeItemFromCart(event) {
